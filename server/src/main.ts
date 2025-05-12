@@ -1,3 +1,5 @@
+import type { RequestHandler } from "express";
+
 // Load environment variables from .env file
 import "dotenv/config";
 
@@ -20,3 +22,9 @@ app
   .on("error", (err: Error) => {
     console.error("Error:", err.message);
   });
+
+const sayWelcome: RequestHandler = (req, res) => {
+  res.send("Welcome to Wild Series !");
+};
+
+app.get("/", sayWelcome);
